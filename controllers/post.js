@@ -79,4 +79,35 @@ module.exports = class Controller{
         res.send({message:'gagal', err})
       })
     }
+
+    static getRecent(req, res) {
+      Models.Post.find({}, null, {sort: {createdAt: -1}})
+      .then(posts => {
+        res.send({
+          message: 'berhasil',
+          data: posts
+        });
+      })
+      .catch((err) => {
+        res.send({
+          message: 'gagal',
+        });
+      })
+    }
+
+    static getById(req,res) {
+      let id = req.params.id;
+      Models.Post.findOne({ '_id': id })
+      .then((post) => {
+        res.send({
+          message: 'berhasil',
+          data: post,
+        });
+      })
+      .catch((err) => {
+        res.send({
+          message: 'gagal',
+        })
+      })
+    }
 };

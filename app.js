@@ -3,12 +3,14 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const cors = require('cors');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 const posts = require('./routes/posts');
 
 var app = express();
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

@@ -29,7 +29,7 @@ module.exports = class Controller{
           if(err){
             throw err
           }else{
-            res.send({message:'berhasil', token:token})
+            res.send({message:'berhasil', token:token, id: user._id})
           }
         })
       }else{
