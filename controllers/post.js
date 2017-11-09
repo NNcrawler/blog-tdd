@@ -25,7 +25,7 @@ module.exports = class Controller{
 
     static update(req, res){
       let postId = mongoose.Types.ObjectId(req.body.postId);
-
+      console.log(postId);
       jwtprocessor.verify(req.body.token)
       .then(response=>{
         let user = mongoose.Types.ObjectId(response.id);
@@ -65,7 +65,8 @@ module.exports = class Controller{
 
     static delete(req,res){
       let token = req.body.token;
-      let id = req.body.id
+      let id = req.body.id;
+      console.log(token);
       jwtprocessor.verify(token)
       .then(response=>{
         let user = mongoose.Types.ObjectId(response.id);
